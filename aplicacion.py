@@ -89,7 +89,9 @@ with st.form("formulario_final"):
     submit = st.form_submit_button("✅ Guardar Registro de Producción")
 
 if submit:
-    ahora = datetime.now()
+    import pytz
+    zona_ecuador = pytz.timezone('America/Guayaquil')
+    ahora = datetime.now(zona_ecuador)
     fecha_dt = datetime.combine(fecha, ahora.time())
 
     operadores = [op["codigo"] for op in operarios_merma if op["codigo"] != ""]
